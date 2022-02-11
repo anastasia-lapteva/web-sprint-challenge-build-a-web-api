@@ -147,7 +147,47 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
-1. Understand and explain the use of Middleware.
-1. The basic principles of the REST architectural style.
-1. Understand and explain the use of Express Routers.
-1. Describe tooling used to manually test the correctness of an API.
+
+Node.js is an asynchronous event-driven JavaScript runtime (the time that a program is running alongside all the external instructions needed for proper executions). Node.js is designed to build scalable network applications. We have been using Node.js in the context of building Web Servers.
+Some advantages of using Node.js for writing server-side code:
+(a) Node.js uses the same programming language (JavaScript) and paradigm (method to solve some problem or do some task) for both client and server
+(b) JavaScript is single-threaded, which is less complex.
+(c) JavaScript is asynchronous.
+(d) JavaScript gives access to the npm repository
+
+Express is a framework that sits on top of Node.js.
+Main Features of Express include:
+(a) Middleware --> middleware functions can get the request and response objects, operate on them and (when specified) trigger some action
+(b) Routing --> selects which request handler function is executed based on the URL visited and the HTTP method used
+(c) Routers for Application Modularity --> allows to break up applications into routers. Each router can have its own middleware and routing
+(d) Convenience Helpers --> helpers (extension methods added to the request and response objects) provide functionality to make writing web applications and API servers easier
+(e) Views --> views provide a way to dynamically render HTML on the server and generate it using other languages
+
+2. Understand and explain the use of Middleware.
+
+Middleware is software that lies between an operating system and the applications running it. Sometimes called plumbing, it connects two applications together so data and databases can be easily passed between the "pipe" as long as certain requirements are met per each piece of middleware.
+
+There are different types of middleware, which BloomTech has grouped into 3 categories:
+(1) Build-in Middleware - is included with Express but not added to the application automatically
+(2) Third-party Middleware - npm modules that we can install and then import into our application
+(3) Custom Middleware - functions that we write to perform specific tasks
+
+3. The basic principles of the REST architectural style.
+
+A RESTful API is an application programming interface (API) that conforms to the constraints of REST architectural style and allows for interaction with RESTful web services. REST stands for representational state transfer.
+
+REST APIs have six constraints:
+(1) client-server architecture
+(2) stateless architecture --> each request should stand on its own and order should not matter
+(3) cacheable --> caching is a way to store and retrieve data so that the server can fulfill future requests faster without repeating expensive calculations/ operations
+(4) layered system --> there may be several layers between a client and a server
+(5) code on demand --> the API returns the resource and code to act on it
+(6) uniform interfaces --> it is recommended for each resource to be accessible through a single URL
+
+4. Understand and explain the use of Express Routers.
+
+Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URL (path) and a specific HTTP request method (GET, POST, etc.). Each route can have one or more handler functions, which are executed when th route is matched.
+
+5. Describe tooling used to manually test the correctness of an API.
+
+There are many tools available to manually test the correctness of an API. The two popular tools we have been using in class are Postman and HTTPie. Postman is an API platform for building and using APIs. HTTPie is a command-line HTTP client that allows for creating and sending arbitrary HTTP requests.
