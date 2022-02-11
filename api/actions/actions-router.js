@@ -39,4 +39,17 @@ router.post('/', validateAction, (req, res, next) =>
         });
 });
 
+router.put('/:id', validateAction, checkActionId, (req, res, next) =>
+{
+    Actions.update(req.params.id, req.body)
+        .then(action =>
+        {
+            res.status(200).json(action);
+        })
+        .catch(error =>
+        {
+            next(error);
+        });
+});
+
 module.exports = router;
