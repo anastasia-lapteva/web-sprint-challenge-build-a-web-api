@@ -1,7 +1,8 @@
 const express = require("express");
 const Actions = require("./actions-model");
 const {
-    checkActionId
+    checkActionId,
+    validateAction
 } = require('./actions-middlware.js');
 
 const router = express.Router();
@@ -22,9 +23,20 @@ router.get('/', (req, res, next) =>
 
 router.get('/:id', checkActionId, (req, res) =>
 {
-    // an earlier middleware had the action
-    // and put it in the req object
     res.json(req.action);
+});
+
+router.post('/', validateAction, (req, res, next) =>
+{
+    Actions.insert(req.body)
+        .then(action =>
+        {
+            res.status(201).json(action);
+        })
+        .catch(error =>
+        {
+            next(error);
+        });
 });
 
 module.exports = router;

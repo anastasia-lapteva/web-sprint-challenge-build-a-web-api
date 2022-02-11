@@ -7,12 +7,10 @@ async function checkActionId(req, res, next)
         const possibleAction = await Action.get(req.params.id);
         if (possibleAction)
         {
-            // we already have the action
             req.action = possibleAction;
             next();
         } else
         {
-            // send an error to the err handling middleware in server.js
             next({ status: 404, message: `No Action ${req.params.id}` });
         }
     }
@@ -22,7 +20,19 @@ async function checkActionId(req, res, next)
     }
 }
 
+function validateAction(req, res, next)
+{
+    if (!req.body.project_id || !req.body.description || !req.body.notes)
+    {
+        next({ status: 400, message: "Please provide project_id, description, and notes" });
+    } else
+    {
+        next();
+    }
+}
+
 module.exports =
 {
-    checkActionId
+    checkActionId,
+    validateAction
 };
