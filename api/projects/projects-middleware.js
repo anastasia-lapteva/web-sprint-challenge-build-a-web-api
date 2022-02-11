@@ -19,7 +19,20 @@ async function checkProjectId(req, res, next)
     }
 }
 
+function validateProject(req, res, next)
+{
+    if (!req.body.name || !req.body.description || req.body.completed == null) 
+    {
+        next({ status: 400, message: "Please provide a name and description" });
+    } else 
+    {
+        next();
+    }
+}
+
+
 module.exports =
 {
-    checkProjectId
+    checkProjectId,
+    validateProject
 };
